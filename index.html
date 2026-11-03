@@ -24,6 +24,7 @@
       --border: rgba(0, 0, 0, 0.12);
       --font: 'Jost', sans-serif;
       --nav-height: 80px;
+      --avatar: min(32vw, 460px);
     }
 
     html { scroll-behavior: smooth; }
@@ -85,7 +86,7 @@
     .nav-links a:hover { color: var(--white); }
 
     /* HERO */
-    .hero-wrapper { padding-top: 64px; }
+    .hero-wrapper { padding-top: var(--nav-height); }
 
     .hero-landscape {
       width: 100%;
@@ -113,23 +114,21 @@
     }
 
     .hero-avatar {
-      width: 25vw;
-      height: 25vw;
-      max-width: 375px;
-      max-height: 375px;
+      width: var(--avatar);
+      height: var(--avatar);
       border-radius: 50%;
       object-fit: cover;
       object-position: center top;
       border: 4px solid var(--band);
       position: absolute;
       right: 6vw;
-      top: -25%;
-      transform: translateY(-40%);
+      top: 0;
+      transform: translateY(-50%);
     }
 
     .hero-text,
     .hero-icon-links {
-      width: 75%;
+      width: calc(100% - var(--avatar) - 1rem);
       min-width: 0;
     }
 
@@ -279,13 +278,16 @@
 
     /* RESPONSIVE */
     @media (max-width: 640px) {
-      :root { --nav-height: 68px; }
+      :root { --nav-height: 68px; --avatar: 170px; }
       nav { padding: 1.2rem 1.5rem; }
-      .nav-links { gap: 1.5rem; }
+      .nav-logo { font-size: 1.25rem; white-space: nowrap; }
+      .nav-links { gap: 1.25rem; }
+      .nav-links a { font-size: 1rem; }
       .hero-landscape { height: 140px; }
-      .hero-avatar { width: 130px; height: 130px; right: 1.8rem; transform: translateY(-50%) translateY(-70px); }
+      .hero-band { padding-top: 5rem; }
+      .hero-avatar { right: 1.5rem; transform: translateY(-60%); }
       .hero-text,
-      .hero-icon-links { width: calc(100% - 150px); }
+      .hero-icon-links { width: 100%; }
       section { padding: 4rem 1.5rem; }
     }
   </style>
@@ -333,14 +335,15 @@
     <!-- ABOUT -->
     <section id="about">
       <h2 class="section-label">About Me</h2>
-      <p>[paragraph about me and my research]</p>
-      <p>[paragraph about my background]</p>
+      <p>I am a developmental and cognitive scientist studying the foundations of fairness reasoning and ethical decision-making.</p>
+      <p>Currently, I am a fourth-year PhD student in the Social Development and Learning Lab, working with Dr. Peter Blake.</p>
+      <p>Prior to graduate school, I earned my BA in Psychology from Queen&rsquo;s University, where I completed my honors thesis with Dr. Valerie Kuhlmeier. I then worked as a lab manager with Dr. Tamar Kushnir at Duke University.</p>
     </section>
 
     <!-- RESEARCH -->
     <section id="research">
       <h2 class="section-label">Research</h2>
-      <p>[my research examines various questions]</p>
+      <p>My research examines the cognitive and developmental foundations of fairness reasoning and ethical decision-making. Broadly, I am interested in how children develop an understanding of fairness, how they apply moral principles when making decisions, and how their judgments are shaped by the social contexts in which those decisions occur. Through this work, I aim to better understand the cognitive and social mechanisms underlying children&rsquo;s moral reasoning, particularly how they navigate situations involving competing moral considerations and evaluate the decisions of others.</p>
       <div class="research-grid">
 
         <div class="research-card">
