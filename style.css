@@ -144,7 +144,13 @@ nav {
   color: rgba(255, 255, 255, 0.9);
   letter-spacing: 0.06em;
 }
-.hero-title span { white-space: nowrap; }
+/* Subtitle: stacked lines by default, one line when the window is wide enough */
+.hero-title span { display: block; }
+.hero-title .sep { display: none; }
+@media (min-width: 1500px) {
+  .hero-title span { display: inline; white-space: nowrap; }
+  .hero-title .sep { display: inline; }
+}
 
 /* ICON LINKS */
 .icon-links {
@@ -278,7 +284,5 @@ footer {
   .hero-avatar { right: 1.5rem; transform: translateY(-60%); }
   .hero-text { width: 100%; }
   .hero-title { font-size: 1rem; }
-  .hero-title span { display: block; white-space: normal; }
-  .hero-title .sep { display: none; }
   main { padding: 3rem 1.5rem; }
 }
