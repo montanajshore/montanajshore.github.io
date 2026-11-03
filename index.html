@@ -3,26 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YOUR NAME</title>
+  <title>Montana Shore</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --white: #ffffff;
       --off-white: #f8f6f3;
-      --ink: #1a1a1a;
-      --mid: #555;
-      --light: #888;
-      --accent: #8b7355;
-      --border: rgba(0,0,0,0.1);
+      --ink: #2e2e2e;              
+      --mid: #6a6a6a;              
+      --light: #999;             
+      --accent: #a08c6e;           
+      --band: #5b6e82;            
+      --border: rgba(0,0,0,0.08); 
+      --font: 'Jost', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Jost', sans-serif;
+      font-family: var(--font);
       font-weight: 300;
       color: var(--ink);
       background: var(--off-white);
@@ -37,19 +39,19 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.4rem 3rem;
-      background: rgba(14,14,14,0.9);
+      background: rgba(50,60,70,0.88);  
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       transition: background 0.3s;
     }
 
     .nav-logo {
-      font-family: 'Jost', sans-serif;
+      font-family: var(--font);
       font-weight: 200;
-      font-size: 0.95rem;
+      font-size: 1.5rem;
       letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255,255,255,0.9);
       text-decoration: none;
     }
 
@@ -60,11 +62,11 @@
     }
 
     .nav-links a {
-      font-family: 'Jost', sans-serif;
+      font-family: var(--font);
       font-weight: 300;
-      font-size: 0.85rem;
+      font-size: 1.2rem;
       letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
       position: relative;
       transition: color 0.2s;
@@ -78,224 +80,235 @@
       background: var(--accent);
       transition: width 0.3s ease;
     }
-
     .nav-links a:hover::after { width: 100%; }
-    .nav-links a:hover { color: rgba(255,255,255,0.95); }
+    .nav-links a:hover { color: var(--white); }
 
     /* HERO */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      display: flex;
-      align-items: flex-end;
-      padding: 0 0 8vh 7vw;
-      background: #0e0e0e;
+    .hero-wrapper { padding-top: 64px; }
+
+    .hero-landscape {
+      width: 100%;
+      height: 275px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: brightness(0.75);
     }
 
-    .hero-content {
+    .hero-band {
+      background: var(--band);
+      padding: 2rem 7vw 2.5rem;
       position: relative;
-      z-index: 2;
-      animation: fadeUp 1.2s ease 0.3s both;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: fadeUp 1s ease 0.2s both;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(3rem, 7vw, 6.5rem);
-      color: var(--white);
-      letter-spacing: 0.18em;
-      line-height: 1.05;
-      margin-bottom: 1.8rem;
+    .hero-avatar {
+      width: 25vw;
+      height: 25vw;
+      max-width: 375px;
+      max-height: 375px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 4px solid var(--band);
+      position: absolute;
+      right: 6vw;
+      top: -25%;
+      transform: translateY(-40%);
     }
 
-    .hero-title {
-      font-family: 'Jost', sans-serif;
-      font-weight: 200;
-      font-size: clamp(0.85rem, 1.4vw, 1.05rem);
-      color: rgba(255,255,255,0.55);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+    .hero-text {
+      width: calc(100% - 25%);
+      min-width: 0;
+    }
+
+    .hero-name {
+      font-family: var(--font);
+      font-weight: 300;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      color: var(--white);
+      letter-spacing: 0.1em;
+      line-height: 1.1;
+      margin-bottom: 0.3rem;
     }
 
     .hero-divider {
       width: 40px;
       height: 1px;
-      background: rgba(255,255,255,0.2);
-      margin: 1.2rem 0;
+      background: rgba(255,255,255,0.5);
+      margin: 0.5rem 0;
+    }
+
+    .hero-title {
+      font-family: var(--font);
+      font-weight: 300;
+      font-size: clamp(0.8rem, 1.4vw, 1rem);
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      white-space: normal;
+      max-width: 100%;
+    }
+
+    /* HERO ICON LINKS */
+    .hero-icon-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.4rem;
+      flex-wrap: wrap;
+      align-items: center;
+      width: calc(100% - 25%);
+    }
+
+    .hero-icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.15s, opacity 0.2s;
+    }
+
+    .hero-icon-link:hover {
+      transform: translateY(-2px);
+      opacity: 0.3;
+    }
+
+    .hero-icon-link img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      display: block;
     }
 
     /* SECTIONS */
     section {
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 7rem 2rem;
+      padding: 4rem 4rem;
     }
 
     .section-label {
-      font-family: 'Jost', sans-serif;
-      font-weight: 200;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2.5rem;
-    }
-
-    h2 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font);
       font-weight: 300;
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--ink);
-      letter-spacing: 0.04em;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color:  var(--ink);
       margin-bottom: 2rem;
-      line-height: 1.2;
     }
 
     p {
-      font-size: 1rem;
+      font-family: var(--font);
+      font-weight: 375;
+      font-size: 1.25rem;
       line-height: 1.9;
-      color: var(--mid);
-      max-width: 680px;
+      color: rgba(50,60,70,0.88);
+      max-width: 100%;
     }
 
     p + p { margin-top: 1.2rem; }
 
-    /* ABOUT */
     #about { border-top: 1px solid var(--border); }
 
-    /* LAB */
-    #lab {
-      background: white;
-      max-width: 100%;
-      padding: 7rem 0;
-    }
-
-    #lab .inner {
-      max-width: 900px;
+    /* RESEARCH */
+    #research {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 4rem 4rem;
+      border-top: 1px solid rgba(0,0,0,0.25);
     }
 
     .research-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: 1fr;
       gap: 2px;
       margin-top: 3rem;
     }
 
     .research-card {
-      background: var(--off-white);
+      background: #ede9e3;
       padding: 2.5rem 2rem;
       transition: background 0.2s;
     }
-
-    .research-card:hover { background: #f0ece6; }
+    .research-card:hover { background: #e4dfd7; }
 
     .card-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 300;
-      color: rgba(139,115,85,0.2);
+      font-family: var(--font);
+      font-weight: 200;
+      font-size: 2.5rem;
+      color: rgba(50,60,70,0.88);
       line-height: 1;
       margin-bottom: 1rem;
+      letter-spacing: 0.05em;
     }
 
     .card-title {
-      font-family: 'Jost', sans-serif;
+      font-family: var(--font);
       font-weight: 400;
       font-size: 0.9rem;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       color: var(--ink);
       margin-bottom: 0.8rem;
+      text-transform: uppercase;
     }
 
     .card-desc {
+      font-family: var(--font);
+      font-weight: 300;
       font-size: 0.85rem;
       color: var(--light);
       line-height: 1.7;
     }
 
-    /* PUBLICATIONS */
-    #publications { border-top: 1px solid var(--border); }
-
-    .pub-list { margin-top: 2.5rem; }
-
-    .pub-item {
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 3.5rem 1fr;
-      gap: 1.5rem;
-    }
-
-    .pub-year {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
-      color: var(--light);
-      padding-top: 0.1rem;
-    }
-
-    .pub-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.5;
-      margin-bottom: 0.4rem;
-    }
-
-    .pub-authors {
-      font-size: 0.82rem;
-      color: var(--light);
-      font-style: italic;
-      margin-bottom: 0.3rem;
-    }
-
-    .pub-journal {
-      font-size: 0.82rem;
-      color: var(--accent);
-      letter-spacing: 0.04em;
-    }
-
     /* FOOTER */
     footer {
-      background: var(--ink);
-      color: rgba(255,255,255,0.4);
+      background: rgba(50,60,70,0.88);
+      color: rgba(255,255,255,0.5);
       text-align: center;
       padding: 3rem 2rem;
+      font-family: var(--font);
       font-size: 0.8rem;
       letter-spacing: 0.1em;
     }
 
     footer a {
-      color: rgba(255,255,255,0.5);
+      font-family: var(--font);
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
       text-decoration: none;
       margin: 0 1rem;
       transition: color 0.2s;
     }
-
     footer a:hover { color: var(--white); }
 
     .footer-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.7);
+      font-family: var(--font);
+      font-weight: 200;
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.85);
       margin-bottom: 1rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
     }
 
     /* RESPONSIVE */
     @media (max-width: 640px) {
       nav { padding: 1.2rem 1.5rem; }
       .nav-links { gap: 1.5rem; }
-      .hero { padding-bottom: 10vh; padding-left: 1.8rem; }
+      .hero-landscape { height: 140px; }
+      .hero-avatar { width: 130px; height: 130px; right: 1.8rem; transform: translateY(-50%) translateY(-70px); }
+      .hero-text { max-width: calc(100% - 150px); }
+      .hero-icon-links { width: calc(100% - 150px); }
+      section { padding: 5rem 1.5rem; }
+      #research { padding: 5rem 1.5rem; }
     }
   </style>
 </head>
@@ -303,117 +316,78 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-logo" href="#">YOUR NAME</a>
+    <a class="nav-logo" href="#">Montana Shore</a>
     <ul class="nav-links">
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#lab">Lab</a></li>
-      <li><a href="#publications">Publications</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="cv.pdf" target="_blank">CV</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1 class="hero-name">YOUR NAME</h1>
-      <div class="hero-divider"></div>
-      <p class="hero-title">YOUR TITLE &nbsp;|&nbsp; YOUR INSTITUTION &nbsp;|&nbsp; YOUR DEPARTMENT</p>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-label">About Me</div>
-    <h2>YOUR TAGLINE OR RESEARCH FOCUS</h2>
-    <p>
-      YOUR BIO PARAGRAPH ONE. Introduce your role, institution, and research focus.
-    </p>
-    <p>
-      YOUR BIO PARAGRAPH TWO. Background, previous positions, methods you use.
-    </p>
-  </section>
-
-  <!-- LAB — add or remove research-card blocks as needed -->
-  <div id="lab">
-    <div class="inner">
-      <div class="section-label">The Lab</div>
-      <h2>Research Areas</h2>
-      <p>ONE SENTENCE DESCRIBING YOUR LAB'S OVERALL FOCUS.</p>
-      <div class="research-grid">
-
-        <div class="research-card">
-          <div class="card-number">01</div>
-          <div class="card-title">AREA ONE TITLE</div>
-          <p class="card-desc">One or two sentences describing this research area.</p>
-        </div>
-
-        <div class="research-card">
-          <div class="card-number">02</div>
-          <div class="card-title">AREA TWO TITLE</div>
-          <p class="card-desc">One or two sentences describing this research area.</p>
-        </div>
-
-        <div class="research-card">
-          <div class="card-number">03</div>
-          <div class="card-title">AREA THREE TITLE</div>
-          <p class="card-desc">One or two sentences describing this research area.</p>
-        </div>
-
-        <div class="research-card">
-          <div class="card-number">04</div>
-          <div class="card-title">AREA FOUR TITLE</div>
-          <p class="card-desc">One or two sentences describing this research area.</p>
-        </div>
-
+  <div class="hero-wrapper" id="home">
+    <img class="hero-landscape" src="landscape.jpeg" alt="Banner" />
+    <div class="hero-band">
+      <img class="hero-avatar" src="profile.jpeg" alt="Montana Shore" />
+      <div class="hero-text">
+        <h1 class="hero-name">Montana Shore</h1>
+        <div class="hero-divider"></div>
+        <p class="hero-title">PhD Student &nbsp;|&nbsp; Boston University &nbsp;|&nbsp; Department of Psychological and Brain Sciences</p>
+      </div>
+      <div class="hero-icon-links">
+        <a class="hero-icon-link" href="mailto:mjshore@bu.edu" title="Email">
+          <img src="email.png" alt="Email" />
+        </a>
+        <a class="hero-icon-link" href="https://scholar.google.com/citations?user=RjfIgo4AAAAJ&hl=en&oi=sra" target="_blank" title="Google Scholar">
+          <img src="googlescholar.png" alt="Google Scholar" />
+        </a>
+        <a class="hero-icon-link" href="https://www.linkedin.com/in/montana-shore-19417b161/" target="_blank" title="LinkedIn">
+          <img src="linkedin.png" alt="LinkedIn" />
+        </a>
+        <a class="hero-icon-link" href="https://osf.io/xu5y9/" target="_blank" title="OSF">
+          <img src="osf.png" alt="OSF" />
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- PUBLICATIONS — copy/paste pub-item blocks to add more -->
-  <section id="publications">
-    <div class="section-label">Publications</div>
-    <h2>Selected Works</h2>
-    <div class="pub-list">
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">About Me</div>
+    <p>[paragraph about me and my research]</p>
+    <p>[paragraph about my background]</p>
+  </section>
 
-      <div class="pub-item">
-        <div class="pub-year">YEAR</div>
-        <div class="pub-content">
-          <div class="pub-title">PAPER TITLE</div>
-          <div class="pub-authors">LAST, F., LAST, F., & LAST, F.</div>
-          <div class="pub-journal">JOURNAL NAME</div>
-        </div>
+  <!-- RESEARCH -->
+  <div id="research">
+    <div class="section-label">Research</div>
+    <p>[my research examines various questions]</p>
+    <div class="research-grid">
+
+      <div class="research-card">
+        <div class="card-number">01</div>
+        <div class="card-title">Area 1</div>
+        <p class="card-desc">One or two sentences describing this research area.</p>
       </div>
 
-      <div class="pub-item">
-        <div class="pub-year">YEAR</div>
-        <div class="pub-content">
-          <div class="pub-title">PAPER TITLE</div>
-          <div class="pub-authors">LAST, F., LAST, F., & LAST, F.</div>
-          <div class="pub-journal">JOURNAL NAME</div>
-        </div>
+      <div class="research-card">
+        <div class="card-number">02</div>
+        <div class="card-title">Area 2</div>
+        <p class="card-desc">One or two sentences describing this research area.</p>
       </div>
 
-      <div class="pub-item">
-        <div class="pub-year">YEAR</div>
-        <div class="pub-content">
-          <div class="pub-title">PAPER TITLE</div>
-          <div class="pub-authors">LAST, F., LAST, F., & LAST, F.</div>
-          <div class="pub-journal">JOURNAL NAME</div>
-        </div>
+      <div class="research-card">
+        <div class="card-number">03</div>
+        <div class="card-title">Area 3</div>
+        <p class="card-desc">One or two sentences describing this research area.</p>
       </div>
 
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-name">YOUR NAME</div>
-    <div>
-      <a href="mailto:YOUR@EMAIL.EDU">YOUR@EMAIL.EDU</a>
-      <a href="#">Google Scholar</a>
-      <a href="#">CV</a>
-      <a href="#">Twitter / X</a>
-    </div>
-    <p style="margin-top:1.5rem; font-size:0.72rem;">© 2026 YOUR NAME · YOUR DEPARTMENT · YOUR INSTITUTION</p>
+    <p style="margin-top:0.5rem;"></p>
   </footer>
 
 </body>
