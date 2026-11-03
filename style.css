@@ -55,6 +55,7 @@ nav {
 }
 
 .nav-links a {
+  font-weight: 300;
   font-size: 1.2rem;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.75);
@@ -120,6 +121,7 @@ nav {
 .hero-text {
   width: calc(100% - var(--avatar) + 1vw - 1.5rem);
   min-width: 0;
+  container-type: inline-size;
 }
 
 .hero-name {
@@ -139,15 +141,17 @@ nav {
 }
 
 .hero-title {
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
-/* Subtitle: stacked lines by default, one line when the window is wide enough */
+/* Subtitle: stacked lines by default, one line when there is room beside the photo */
 .hero-title span { display: block; }
 .hero-title .sep { display: none; }
-@media (min-width: 1500px) {
+@container (min-width: 1000px) {
   .hero-title span { display: inline; white-space: nowrap; }
   .hero-title .sep { display: inline; }
 }
@@ -187,16 +191,19 @@ main {
   padding: 4rem;
 }
 
+/* Pages without the banner start below the fixed top bar */
+main.page-top { padding-top: calc(var(--nav-height) + 3rem); }
+
 section { scroll-margin-top: var(--nav-height); }
 section + section { margin-top: 4rem; }
 
 .section-label {
   font-weight: 300;
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink);
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
 section p {
@@ -246,32 +253,6 @@ section .card-desc {
   color: var(--mid);
 }
 
-/* FOOTER */
-footer {
-  background: var(--slate);
-  color: rgba(255, 255, 255, 0.5);
-  text-align: center;
-  padding: 3rem 2rem;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-}
-
-.footer-name {
-  font-weight: 200;
-  font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 1rem;
-  letter-spacing: 0.1em;
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  margin: 0 1rem;
-  transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--white); }
-
 /* RESPONSIVE */
 @media (max-width: 640px) {
   :root { --nav-height: 68px; --avatar: 170px; }
@@ -283,6 +264,6 @@ footer {
   .hero-band { padding-top: 5rem; }
   .hero-avatar { right: 1.5rem; transform: translateY(-60%); }
   .hero-text { width: 100%; }
-  .hero-title { font-size: 1rem; }
+  .hero-title { font-size: 0.9rem; }
   main { padding: 3rem 1.5rem; }
 }
