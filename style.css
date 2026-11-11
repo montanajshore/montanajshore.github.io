@@ -214,6 +214,16 @@ section p {
 
 section p + p { margin-top: 1.2rem; }
 
+#about p,
+#background p { font-size: 1.4rem; }
+
+section p a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+section p a:hover { color: var(--accent); }
+
 /* RESEARCH */
 .research-grid {
   display: grid;
